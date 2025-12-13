@@ -1,0 +1,23 @@
+{ 
+    "@@locale": "es",
+    "loading_message_1": "cueing up the intro music...",
+    "loading_message_2": "editing out the awkward pauses...",
+    "loading_message_3": "loading the guest's hot takes...",
+    "loading_message_4": "buffering the juicy anecdotes...",
+    "loading_message_5": "syncing the perfect sound effects...",
+    "loading_message_6": "prepping the host's coffee...",
+    "loading_message_7": "finding the lost episode archives...",
+    "loading_message_8": "compressing the audio for crispness...",
+    "loading_message_9": "writing the show notes...",
+    "loading_message_10": "setting up the virtual studio...",
+    "loading_message_11": "dialing in the guest's connection...",
+    "loading_message_12": "trimming the long tangents...",
+    "loading_message_13": "adding the sponsor messages...",
+    "loading_message_14": "testing the mic levels...",
+    "loading_message_15": "queueing up the listener questions...",
+    "loading_message_16": "polishing the episode title...",
+    "loading_message_17": "loading the dramatic cliffhangers...",
+    "loading_message_18": "syncing the cross-promo ads...",
+    "loading_message_19": "prepping the host's witty banter...",
+    "loading_message_20": "rolling the outro music..."
+}

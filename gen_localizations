@@ -1,0 +1,1 @@
+flutter gen-l10n --arb-dir ./lib/l10n/misc/loading_messages --template-arb-file loading_messages_en.arb --output-localization-file loading_messages_localizations.dart --output-class LoadingMessagesLocalizations &&
