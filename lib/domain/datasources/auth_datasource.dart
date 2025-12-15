@@ -1,3 +1,6 @@
+import 'package:podtimer/domain/entities/login_response.dart';
+
 abstract class AuthDatasource {
-  Future<String> login();
+  Future<LoginResponse?> login();
+  String generateRandomString(int length);
 }

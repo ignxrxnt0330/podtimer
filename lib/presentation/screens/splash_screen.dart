@@ -21,7 +21,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     context.read<AuthBloc>().add(GetCachedToken());
     context.read<AuthBloc>().stream.listen((state) {
+      debugPrint("SplashScreen: ${state.token}");
       if (state.token.isNotEmpty) {
+        debugPrint("loggedin");
         if (!context.mounted) return;
         context.push(() => HomeScreen());
       } else {

@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
             const Text("It looks like you are not logged in", style: TextStyle(fontSize: 20)),
             const Text("Do it so we can give you a more personalized experience."),
             TextButton(
-              child: const Text("Login in"),
+              child: const Text("Log in"),
               onPressed: () {
               context.read<AuthBloc>().add(Login());
 
