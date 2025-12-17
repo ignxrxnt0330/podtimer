@@ -20,4 +20,10 @@ class SpCacheDatasource implements CacheDataSource {
     prefs = await SharedPreferences.getInstance();
     await prefs.setString(key, data);
   }
+
+  @override
+  Future<void> removeCachedData(String key) async {
+    prefs = await SharedPreferences.getInstance();
+    await prefs.remove(key);
+  }
 }

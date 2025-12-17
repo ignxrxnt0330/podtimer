@@ -81,9 +81,15 @@ class SpotifyRequestDatasource implements RequestDatasource {
         'refresh_token': cachedRefreshToken,
       },
     );
-    print(response.statusCode);
     print(response.body);
-    print(response.reasonPhrase);
+    final body = jsonDecode(response.body);
+    if (body.containsKey('error')) {
+      if (body['error'] == 'invalid_grant') {
+        cache.removeCachedData('refreshToken');
+        cache.removeCachedData('token');
+        throw UnsupportedError('Refresh token is invalid or expired');
+      }
+    }
     if (response.statusCode == 200) {
       final token = TokenResponse.fromJson(
         jsonDecode(response.body),

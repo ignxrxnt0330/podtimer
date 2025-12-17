@@ -20,4 +20,9 @@ class CacheRepositoryImpl extends CacheRepository {
   Future<void> setCachedData(String key, String data) {
     return datasource.setCachedData(key, data);
   }
+
+  @override
+  Future<void> removeCachedData(String key) {
+    return datasource.removeCachedData(key);
+  }
 }
