@@ -5,5 +5,5 @@ abstract class RequestDatasource {
     Map<String, String> headers,
     Map<String, dynamic>? body,
   });
-  Future<void> refreshToken();
+  Future<bool> refreshToken();
 }

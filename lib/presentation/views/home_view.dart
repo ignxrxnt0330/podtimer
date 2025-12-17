@@ -11,9 +11,15 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     context.read<HomeBloc>().add(const FetchData());
+  }
 
-    return Material(child: Center(child: Column()));
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(children: [Text('Home View Content')]),
+    );
   }
 }

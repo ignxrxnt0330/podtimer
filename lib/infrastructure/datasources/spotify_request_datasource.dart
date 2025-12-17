@@ -20,7 +20,7 @@ class SpotifyRequestDatasource implements RequestDatasource {
     http.Response response;
     final Map<String, String> headers_ = Map<String, String>.from(headers);
     headers_.addAll({
-      'Authorization': 'Bearer ${await cache.getCachedData("token")} }',
+      'Authorization': 'Bearer ${await cache.getCachedData("token")}',
     });
 
     if (method == 'GET') {
@@ -50,7 +50,10 @@ class SpotifyRequestDatasource implements RequestDatasource {
           ),
         );
       case 401:
-        await refreshToken();
+        final refreshed = await refreshToken();
+        if (!refreshed) {
+          return Future.error('Unauthorized: Token refresh failed');
+        }
         return makeRequest(
           url: url,
           method: method,
@@ -65,14 +68,17 @@ class SpotifyRequestDatasource implements RequestDatasource {
   }
 
   @override
-  Future<void> refreshToken() async {
+  Future<bool> refreshToken() async {
+    final String cachedRefreshToken =
+        await cache.getCachedData('refreshToken') ?? '';
+    print('Refreshing token with refresh token: $cachedRefreshToken');
     final response = await http.post(
       Uri.parse(Environment.tokenUrl),
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: {
         'client_id': Environment.clientId,
         'grant_type': 'refresh_token',
-        'refresh_token': await cache.getCachedData('refreshToken'),
+        'refresh_token': cachedRefreshToken,
       },
     );
     print(response.statusCode);
@@ -84,6 +90,8 @@ class SpotifyRequestDatasource implements RequestDatasource {
       ).accessToken;
       print('New token: $token');
       cache.setCachedData('token', token);
+      return true;
     }
+    return false;
   }
 }

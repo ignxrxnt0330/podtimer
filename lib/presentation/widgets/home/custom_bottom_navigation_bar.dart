@@ -8,21 +8,29 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      enableFeedback: false,
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-      ],
-      currentIndex: context.read<HomeBloc>().state.index,
-      onTap: (index) {
-        if (index != context.read<HomeBloc>().state.index) {
-          context.read<HomeBloc>().add(IndexChanged(index));
-          context.go('/home/$index');
-        }
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return BottomNavigationBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          enableFeedback: false,
+          currentIndex: state.index,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite),
+              label: 'Following',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          ],
+          onTap: (index) {
+            if (index != state.index) {
+              context.read<HomeBloc>().add(IndexChanged(index));
+              context.go('/home/$index');
+            }
+          },
+        );
       },
     );
   }

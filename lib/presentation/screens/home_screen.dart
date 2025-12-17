@@ -10,13 +10,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: mainAppKey.currentState!.pages.elementAt(
-          context.read<HomeBloc>().state.index,
-        ),
-      ),
-      bottomNavigationBar: CustomBottomNavigationBar(),
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return Scaffold(
+          body: Center(
+            child: mainAppKey.currentState!.pages.elementAt(state.index),
+          ),
+          bottomNavigationBar: CustomBottomNavigationBar(),
+        );
+      },
     );
   }
 }
