@@ -46,3 +46,7 @@ app.*.map.json
 
 .env
 Session.vim
+
+# Flutter localization files
+lib/l10n/**/*.dart
+lib/l10n/*.dart

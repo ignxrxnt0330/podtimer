@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:podtimer/l10n/app_localizations.dart';
 import 'package:podtimer/l10n/misc/loading_messages/loading_messages_localizations.dart';
 
 class FullScreenLoader extends StatelessWidget {
@@ -36,19 +37,20 @@ class FullScreenLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
     return Material(
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("please wait..."),
+            Text(localizations.wait),
             const SizedBox(height: 10),
             const CircularProgressIndicator(strokeWidth: 2),
             const SizedBox(height: 10),
             StreamBuilder(
               stream: getLoadingMessages(context),
               builder: (context, snapshot) {
-                if (!snapshot.hasData) return const Text("Loading...");
+                if (!snapshot.hasData) return Text(localizations.loading);
                 return Text(snapshot.data!);
               },
             ),

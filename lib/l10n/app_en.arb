@@ -1,4 +1,13 @@
 {
   "@@locale": "en",
   "appTitle": "podtimer",
+  "home": "Home",
+  "search": "Search",
+  "following": "Following",
+  "profile": "Profile",
+  "wait": "Please wait...",
+  "loading": "Loading...",
+  "notLoggedIn": "It looks like you are not logged in",
+  "login": "Log in",
+  "followingEmpty": "You are not following any podcasts"
 }

@@ -1,4 +1,13 @@
 {
   "@@locale": "es",
-  "appTitle": "podtimer"
+  "appTitle": "podtimer",
+  "home": "Home",
+  "search": "Buscar",
+  "following": "Siguiendo",
+  "profile": "Perfil",
+  "wait": "Espera por favor...",
+  "loading": "Cargando...",
+  "notLoggedIn": "Parece que no has iniciado sesión",
+  "login": "Iniciar sesión",
+  "followingEmpty": "No sigues ningún podcast"
 }

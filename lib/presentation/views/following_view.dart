@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:podtimer/domain/entities/podcast.dart';
+import 'package:podtimer/l10n/app_localizations.dart';
 import 'package:podtimer/presentation/blocs/following/following_bloc.dart';
 import 'package:podtimer/presentation/widgets/shared/podcast/podcast_list_tile.dart';
 
@@ -20,15 +20,15 @@ class _FollowingViewState extends State<FollowingView> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
     return BlocBuilder<FollowingBloc, FollowingState>(
       builder: (context, state) {
         return ListView.builder(
           itemCount: state.followedPodcasts.length,
           itemBuilder: (context, index) {
-            //FIXME:
             if (state.followedPodcasts.isEmpty) {
-              return const Center(
-                child: Text("You are not following any podcasts."),
+              return Center(
+                child: Text(localizations.followingEmpty),
               );
             }
 
