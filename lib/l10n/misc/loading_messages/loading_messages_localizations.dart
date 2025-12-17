@@ -62,15 +62,20 @@ import 'loading_messages_localizations_es.dart';
 /// be consistent with the languages listed in the LoadingMessagesLocalizations.supportedLocales
 /// property.
 abstract class LoadingMessagesLocalizations {
-  LoadingMessagesLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  LoadingMessagesLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static LoadingMessagesLocalizations? of(BuildContext context) {
-    return Localizations.of<LoadingMessagesLocalizations>(context, LoadingMessagesLocalizations);
+    return Localizations.of<LoadingMessagesLocalizations>(
+      context,
+      LoadingMessagesLocalizations,
+    );
   }
 
-  static const LocalizationsDelegate<LoadingMessagesLocalizations> delegate = _LoadingMessagesLocalizationsDelegate();
+  static const LocalizationsDelegate<LoadingMessagesLocalizations> delegate =
+      _LoadingMessagesLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,17 +87,18 @@ abstract class LoadingMessagesLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('es')
+    Locale('es'),
   ];
 
   /// No description provided for @loading_message_1.
@@ -216,34 +222,38 @@ abstract class LoadingMessagesLocalizations {
   String get loading_message_20;
 }
 
-class _LoadingMessagesLocalizationsDelegate extends LocalizationsDelegate<LoadingMessagesLocalizations> {
+class _LoadingMessagesLocalizationsDelegate
+    extends LocalizationsDelegate<LoadingMessagesLocalizations> {
   const _LoadingMessagesLocalizationsDelegate();
 
   @override
   Future<LoadingMessagesLocalizations> load(Locale locale) {
-    return SynchronousFuture<LoadingMessagesLocalizations>(lookupLoadingMessagesLocalizations(locale));
+    return SynchronousFuture<LoadingMessagesLocalizations>(
+      lookupLoadingMessagesLocalizations(locale),
+    );
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'es'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en', 'es'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_LoadingMessagesLocalizationsDelegate old) => false;
 }
 
 LoadingMessagesLocalizations lookupLoadingMessagesLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return LoadingMessagesLocalizationsEn();
-    case 'es': return LoadingMessagesLocalizationsEs();
+    case 'en':
+      return LoadingMessagesLocalizationsEn();
+    case 'es':
+      return LoadingMessagesLocalizationsEs();
   }
 
   throw FlutterError(
     'LoadingMessagesLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }
