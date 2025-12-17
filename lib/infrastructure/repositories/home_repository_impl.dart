@@ -36,5 +36,4 @@ class HomeRepositoryImpl implements HomeRepository {
   Future<TimePeriodStats> yearlyStats() {
     return datasource.yearlyStats();
   }
-
 }

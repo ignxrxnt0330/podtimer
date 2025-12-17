@@ -9,7 +9,7 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this.authDatasource, this.cacheDataSource);
 
   @override
-  Future<void> login() async{
+  Future<void> login() async {
     await authDatasource.login();
   }
 

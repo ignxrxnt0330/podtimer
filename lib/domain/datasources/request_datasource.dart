@@ -3,7 +3,7 @@ abstract class RequestDatasource {
     String url,
     String method,
     Map<String, String> headers,
-    Map<String, dynamic>? body
+    Map<String, dynamic>? body,
   });
   Future<void> refreshToken();
 }

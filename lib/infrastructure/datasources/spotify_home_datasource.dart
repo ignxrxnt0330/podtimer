@@ -11,19 +11,20 @@ class SpotifyHomeDatasource extends HomeDatasource {
   Future<Podcast> recentlyPlayed() async {
     final podcast = Podcast();
     return podcast;
-
   }
+
   @override
   Future<List<Podcast>> followedPodcasts() async {
     final podcasts = <Podcast>[];
-    final response = await datasource.makeRequest(url: Environment.userShowsUrl);
+    final response = await datasource.makeRequest(
+      url: Environment.userShowsUrl,
+    );
     response['items'].forEach((item) {
       final podcast = Podcast.fromJson(item['show']);
       podcasts.add(podcast);
     });
 
     return podcasts;
-
   }
 
   // stats
@@ -31,24 +32,23 @@ class SpotifyHomeDatasource extends HomeDatasource {
   Future<TimePeriodStats> todayStats() async {
     final stats = TimePeriodStats();
     return stats;
-
   }
+
   @override
   Future<TimePeriodStats> weeklyStats() async {
     final stats = TimePeriodStats();
     return stats;
-
   }
+
   @override
   Future<TimePeriodStats> monthlyStats() async {
     final stats = TimePeriodStats();
     return stats;
-
   }
+
   @override
   Future<TimePeriodStats> yearlyStats() async {
     final stats = TimePeriodStats();
     return stats;
-
   }
 }

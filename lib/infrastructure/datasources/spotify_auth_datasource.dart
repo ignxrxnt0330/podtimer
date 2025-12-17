@@ -39,10 +39,9 @@ class SpotifyAuthDatasource extends AuthDatasource {
   }
 
   @override
-  Future<TokenResponse?> handleLogin(String code) async{
+  Future<TokenResponse?> handleLogin(String code) async {
     return await exchangeCodeForToken(code);
   }
-
 
   Future<TokenResponse?> exchangeCodeForToken(String code) async {
     final verifier = codeVerifier;

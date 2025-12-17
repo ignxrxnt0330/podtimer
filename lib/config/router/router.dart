@@ -65,13 +65,17 @@ final appRouter = GoRouter(
     } else {
       return '/home/0';
     }
-  }
+  },
 );
 
 void checkLoggedIn(BuildContext context) {
   context.read<AuthBloc>().add(GetCachedToken());
-  context.read<AuthBloc>().stream.firstWhere((state) => state.token.isNotEmpty).then((value) {
-      if (!context.mounted) return;
+  context
+      .read<AuthBloc>()
+      .stream
+      .firstWhere((state) => state.token.isNotEmpty)
+      .then((value) {
+        if (!context.mounted) return;
         context.go('/home/0');
       });
 }

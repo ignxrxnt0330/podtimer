@@ -51,7 +51,12 @@ class SpotifyRequestDatasource implements RequestDatasource {
         );
       case 401:
         await refreshToken();
-        return makeRequest(url: url, method: method, headers: headers, body: body);
+        return makeRequest(
+          url: url,
+          method: method,
+          headers: headers,
+          body: body,
+        );
       default:
         return Future.error(
           'Request failed with status: ${response.statusCode}, body: ${response.body}',
@@ -74,7 +79,9 @@ class SpotifyRequestDatasource implements RequestDatasource {
     print(response.body);
     print(response.reasonPhrase);
     if (response.statusCode == 200) {
-      final token = TokenResponse.fromJson(jsonDecode(response.body)).accessToken;
+      final token = TokenResponse.fromJson(
+        jsonDecode(response.body),
+      ).accessToken;
       print('New token: $token');
       cache.setCachedData('token', token);
     }

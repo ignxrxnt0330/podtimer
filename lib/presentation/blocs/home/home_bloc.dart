@@ -18,12 +18,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       Podcast recentlyPlayed = await repository.recentlyPlayed();
       TimePeriodStats todayStats = await repository.todayStats();
 
-      emit(state.copyWith(
-        followedPodcasts: podcasts,
-        recentlyPlayed: recentlyPlayed,
-        todayStats: todayStats,
-      ));
-      
+      emit(
+        state.copyWith(
+          followedPodcasts: podcasts,
+          recentlyPlayed: recentlyPlayed,
+          todayStats: todayStats,
+        ),
+      );
     });
   }
 }

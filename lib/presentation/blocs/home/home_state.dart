@@ -8,16 +8,16 @@ class HomeState extends Equatable {
   const HomeState({
     this.index = 0,
     this.recentlyPlayed,
-    this.followedPodcasts = const <Podcast>[], 
+    this.followedPodcasts = const <Podcast>[],
     this.todayStats,
-    });
+  });
 
   HomeState copyWith({
     int? index,
     Podcast? recentlyPlayed,
     List<Podcast>? followedPodcasts,
-    TimePeriodStats? todayStats
-    }) {
+    TimePeriodStats? todayStats,
+  }) {
     return HomeState(index: index ?? this.index);
   }
 
