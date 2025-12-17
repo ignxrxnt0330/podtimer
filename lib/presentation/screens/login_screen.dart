@@ -12,15 +12,19 @@ class LoginScreen extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            const Text("It looks like you are not logged in", style: TextStyle(fontSize: 20)),
-            const Text("Do it so we can give you a more personalized experience."),
+            const Text(
+              "It looks like you are not logged in",
+              style: TextStyle(fontSize: 20),
+            ),
+            const Text(
+              "Do it so we can give you a more personalized experience.",
+            ),
             TextButton(
               child: const Text("Log in"),
               onPressed: () {
-              context.read<AuthBloc>().add(Login());
-
+                context.read<AuthBloc>().add(Login());
               },
-            )
+            ),
           ],
         ),
       ),

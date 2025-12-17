@@ -20,6 +20,12 @@ class GetCachedToken extends AuthEvent {
 class NotLoggedIn extends AuthEvent {
   const NotLoggedIn();
 }
+
 class Login extends AuthEvent {
   const Login();
+}
+
+class LoginAccepted extends AuthEvent {
+  final String code;
+  const LoginAccepted(this.code);
 }

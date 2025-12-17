@@ -1,6 +1,7 @@
-import 'package:podtimer/domain/entities/login_response.dart';
+import 'package:podtimer/domain/entities/token_response.dart';
 
 abstract class AuthRepository {
-  Future<LoginResponse?> login();
+  Future<void> login();
+  Future<TokenResponse?> handleLogin(String code);
   String generateRandomString(int length);
 }
