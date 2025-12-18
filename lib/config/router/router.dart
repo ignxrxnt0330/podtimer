@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:podtimer/presentation/blocs/blocs.dart';
 import 'package:podtimer/presentation/screens/screens.dart';
 
+import '../../presentation/views/views.dart';
+
 final appRouter = GoRouter(
   initialLocation: '/splash',
   routes: [
@@ -26,10 +28,13 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: "/podcast/:id",
-      name: "podcastScreen",
+      name: "podcastRedirect",
       builder: (context, state) {
-        return Placeholder();
+        final id = state.pathParameters['id'] ?? "";
+        context.read<PodcastBloc>().add(FetchPodcast(id));
+        return PodcastView();
       },
+      //FIXME:
       routes: const [],
     ),
     GoRoute(
@@ -57,14 +62,14 @@ final appRouter = GoRouter(
     checkLoggedIn(context);
     final isLoggedIn = context.read<AuthBloc>().state.token.isNotEmpty;
     final isCallback = state.uri.toString().startsWith('podtimer://callback');
+    print('Redirecting: isLoggedIn=$isLoggedIn, isCallback=$isCallback route =${state.uri}');
 
     if (isCallback) return '/callback/${state.uri.query}';
 
     if (!isLoggedIn) {
       return '/login';
-    } else {
-      return '/home/0';
     }
+    return null;
   },
 );
 

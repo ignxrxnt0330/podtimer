@@ -41,6 +41,7 @@ class _MainAppState extends State<MainApp> {
         BlocProvider<HomeBloc>(create: (context) => HomeBloc()),
         BlocProvider<ConfigBloc>(create: (context) => ConfigBloc()),
         BlocProvider<FollowingBloc>(create: (context) => FollowingBloc()),
+        BlocProvider<PodcastBloc>(create: (context) => PodcastBloc()),
       ],
       child: MaterialApp.router(
         theme: AppTheme.getTheme(context),

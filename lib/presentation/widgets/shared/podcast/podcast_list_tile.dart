@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:podtimer/domain/entities/podcast.dart';
 
 class PodcastListTile extends StatelessWidget {
@@ -14,7 +15,7 @@ class PodcastListTile extends StatelessWidget {
       title: Text(podcast.name),
       subtitle: Text(podcast.publisher),
       onTap: () {
-        //TODO:
+        context.push('/podcast/${podcast.id}');
       },
     );
   }

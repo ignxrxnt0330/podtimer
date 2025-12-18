@@ -1,5 +1,5 @@
 class Podcast {
-  final List<String> availableMarkets;
+  final String id;
   final String description;
   final bool explicit;
   final String href;
@@ -12,7 +12,7 @@ class Podcast {
   final int totalEpisodes;
 
   Podcast({
-    this.availableMarkets = const [],
+    this.id = '',
     this.description = '',
     this.explicit = false,
     this.href = '',
@@ -27,7 +27,7 @@ class Podcast {
 
   factory Podcast.fromJson(Map<String, dynamic> json) {
     return Podcast(
-      availableMarkets: List<String>.from(json['available_markets'] ?? []),
+      id: json['id'] ?? '',
       description: json['description'] ?? '',
       explicit: json['explicit'] ?? false,
       href: json['href'] ?? '',
